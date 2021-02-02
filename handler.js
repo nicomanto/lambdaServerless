@@ -5,7 +5,7 @@ module.exports.coloreCavalloNapoleone = async (event) => {
     statusCode: 200,
     body: JSON.stringify(
       {
-        message: 'Bianco',
+        message: 'Blu',
       }),
   };
 
