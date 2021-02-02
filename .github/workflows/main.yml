@@ -6,6 +6,27 @@ on:
       - master
 
 jobs:
+  test:
+    name: test function
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: npm install --save-dev serverless-mocha-plugin
+
+    - name: serverless deploy
+      uses: serverless/github-action@master
+      with:
+        args: invoke test
+
+
   deploy:
     name: deploy
     runs-on: ubuntu-latest
@@ -29,3 +50,5 @@ jobs:
         # or if using AWS credentials directly
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+  

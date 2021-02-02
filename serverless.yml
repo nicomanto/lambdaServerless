@@ -10,9 +10,12 @@ provider:
   region: eu-south-1
 
 functions:
-  currentTime:
-    handler: handler.currentTime
+  coloreCavalloNapoleone:
+    handler: handler.coloreCavalloNapoleone
     events:
       - http:
-          path: current-time
+          path: coloreCavalloNapoleone
           method: get
+
+plugins:
+  - serverless-mocha-plugin

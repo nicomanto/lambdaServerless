@@ -1,11 +1,11 @@
 'use strict';
 
-module.exports.currentTime = async (event) => {
+module.exports.coloreCavalloNapoleone = async (event) => {
   return {
     statusCode: 200,
     body: JSON.stringify(
       {
-        message: `current time: ${new Date().toTimeString()}!`,
+        message: 'Bianco',
       }),
   };
 
