@@ -1,5 +1,7 @@
 name: Deploy Lambda function
 
+on: push
+
 jobs:
   deploy:
     name: deploy
