@@ -37,9 +37,9 @@ jobs:
     
     - name: Deploy function
       uses: serverless/github-action@master
-      if: github.ref == 'refs/heads/develop'
+      uses: rlespinasse/github-slug-action@v2.x
       with:
-        args: deploy -s ${{GITHUB_ENV.STAGE}}
+        args: deploy -s ${{env.GITHUB_REF_SLUG}}
       env:
         # SERVERLESS_ACCESS_KEY: ${{ secrets.SERVERLESS_ACCESS_KEY }}
         # or if using AWS credentials directly
