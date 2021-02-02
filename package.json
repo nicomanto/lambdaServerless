@@ -1,5 +1,8 @@
 {
   "devDependencies": {
     "serverless-mocha-plugin": "^1.12.0"
+  },
+  "scripts": {
+    "test": "sls invoke test"
   }
 }
