@@ -15,6 +15,6 @@ describe('coloreCavalloNapoleone', () => {
   it('should be Bianco', async () => {
     const response = await wrapped.run({});
     expect(response.statusCode).to.be.equal(200);
-    expect(JSON.parse(response.body).message).to.be.equal('Bianco');
+    expect(JSON.parse(response.body).message).to.be.equal('Blu');
   });
 });
