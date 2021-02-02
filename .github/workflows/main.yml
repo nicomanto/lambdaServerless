@@ -26,17 +26,21 @@ jobs:
       uses: serverless/github-action@master
       with:
         args: invoke test
+
+    - name: Set variables
+        id: setvars
+        run: |
+          if [[ $GITHUB_REF == 'refs/heads/master' ]]; then
+              echo "STAGE=staging" >> "$GITHUB_ENV"
+          else
+              echo "STAGE=dev" >> "$GITHUB_ENV"
+          fi
     
     - name: Deploy function
       uses: serverless/github-action@master
       if: github.ref == 'refs/heads/develop'
-      env:
-        STAGE: develop
-      if: github.ref == 'refs/heads/master'
-      env:
-        STAGE: staging
       with:
-        args: deploy -s ${{env.STAGE}}
+        args: deploy -s ${{GITHUB_ENV.STAGE}}
       env:
         # SERVERLESS_ACCESS_KEY: ${{ secrets.SERVERLESS_ACCESS_KEY }}
         # or if using AWS credentials directly
