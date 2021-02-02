@@ -36,8 +36,9 @@ jobs:
         fi
     
     - name: Deploy function
-      uses: serverless/github-action@master
-      uses: rlespinasse/github-slug-action@v2.x
+      uses: |
+        serverless/github-action@master
+        rlespinasse/github-slug-action@v2.x
       with:
         args: deploy -s ${{env.GITHUB_REF_SLUG}}
       env:
