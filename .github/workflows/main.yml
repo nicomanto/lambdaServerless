@@ -30,13 +30,13 @@ jobs:
     - name: Deploy function
       uses: serverless/github-action@master
       if: github.ref == 'refs/heads/develop'
-        env:
-          STAGE: develop
+      env:
+        STAGE: develop
       if: github.ref == 'refs/heads/master'
         env:
           STAGE: staging
       with:
-        args: deploy -s ${{STAGE}}
+        args: deploy -s ${{env.STAGE}}
       env:
         # SERVERLESS_ACCESS_KEY: ${{ secrets.SERVERLESS_ACCESS_KEY }}
         # or if using AWS credentials directly
