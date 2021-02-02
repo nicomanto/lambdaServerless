@@ -1,4 +1,4 @@
-service: dev
+service: hello-world
 
 
 frameworkVersion: '2'
