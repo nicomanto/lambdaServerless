@@ -27,18 +27,11 @@ jobs:
       with:
         args: invoke test
 
-    - name: Set environment for branch
-      run: |
-        if [[ $GITHUB_REF == 'refs/heads/master' ]]; then
-            echo "STAGE=staging" >> "$GITHUB_ENV"
-        else
-            echo "STAGE=dev" >> "$GITHUB_ENV"
-        fi
+    - name: Set enviroment variables
+      uses: rlespinasse/github-slug-action@v2.x
     
     - name: Deploy function
-      uses: |
-        serverless/github-action@master
-        rlespinasse/github-slug-action@v2.x
+      uses: serverless/github-action@master
       with:
         args: deploy -s ${{env.GITHUB_REF_SLUG}}
       env:
